@@ -26,6 +26,4 @@ class Spider(CrawlSpider):
         item['operatingSystems'] = response.xpath("//div[@itemprop='operatingSystems']").xpath("text()").extract()
         item['numReviews'] = response.xpath("//span[@class='reviews-num']").xpath("text()").extract()
         item['score'] = response.xpath("//div[@class='score']").xpath("text()").extract()
-        print "######################"
-        print item
         yield item
