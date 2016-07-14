@@ -6,6 +6,15 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 
-class GoogleplaycrawlerPipeline(object):
+import json
+
+class GooglePipeline(object):
+
+    def __init__(self):
+        self.file = open('items.jl', 'wb')
+
     def process_item(self, item, spider):
+        line = json.dumps(dict(item)) + "\n"
+        self.file.write(line)
+        self.file.flush()
         return item
