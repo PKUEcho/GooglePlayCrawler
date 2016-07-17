@@ -17,6 +17,8 @@ class Spider(CrawlSpider):
     ]
 
     def parse_app(self, response):
+	if response.url.find('reviewId') != -1:
+		return;
         item = GoogleItem()
         item['url'] = response.url
         item['numDownloads'] = response.xpath("//div[@itemprop='numDownloads']").xpath("text()").extract()
